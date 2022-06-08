@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스크롤시 헤더 스타일 변경2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        body {
+            background-color: aliceblue;
+        }
+
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9;
+            background-color: rgba(1, 24, 61, 0.537);
+            transition: 1s;
+        }
+
+        header .top_menu {
+            width: 1280px;
+            margin: 0 auto;
+            height: 40px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        header .top_menu li a {
+            padding: 0 10px;
+            color: #fff;
+        }
+
+        header.scroll {
+            position: fixed;
+            background-color: rgba(14, 13, 13, 0.678);
+        }
+
+        header.scroll .top_menu {
+            display: none;
+        }
+
+        header nav ul {
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.773);
+        }
+
+        header nav ul a {
+            color: #fff;
+            padding: 0 70px;
+            font-size: 16px;
+        }
+
+        .main_visual {
+            height: 100vh;
+            position: relative;
+        }
+
+        .main_visual img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .main_visual p {
+            width: 100%;
+            padding: 0 200px;
+            box-sizing: border-box;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            text-align: center;
+            color: #fff;
+        }
+
+        .cont01 {
+            height: 100vh;
+            background-color: rgb(226, 226, 227);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cont01 p {
+            color: rgb(1, 24, 61);
+            width: 1000px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            let header = document.querySelector('header');
+            let headerTop = document.querySelector('.top_menu');
+
+            let headerHeight = header.offsetHeight;
+            let headerTopHeight = headerTop.offsetHeight;
+
+            window.onscroll = function () {
+                let windowTop = window.scrollY;
+                if (windowTop >= headerTopHeight) {
+                    header.classList.add("scroll");
+                } else { header.classList.remove("scroll"); }
+            }
+        }//script end
+    </script>
+</head>
+
+<body>
+    <header>
+        <ul class="top_menu">
+            <li><a href="#">로그인</a></li>
+            <li><a href="#">회원가입</a></li>
+            <li><a href="#">검색</a></li>
+        </ul><!-- .top_menu end -->
+        <nav>
+            <ul>
+                <li><a href="#">menu1</a></li>
+                <li><a href="#">menu2</a></li>
+                <li><a href="#">menu3</a></li>
+                <li><a href="#">menu4</a></li>
+                <li><a href="#">menu5</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="main_visual">
+        <img src="images/mathias-reding-7V8aEJwtC94-unsplash.jpg" alt="" />
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis, distinctio quos iusto hic id ratione. Enim
+            corporis eos, consequatur amet ipsa, illum perferendis, debitis distinctio iste qui mollitia pariatur eum?
+        </p>
+    </section><!-- .main_visual end -->
+    <section class="cont01">
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae debitis, reprehenderit a officiis, eos
+            blanditiis sunt eligendi, laboriosam voluptatem quisquam mollitia repudiandae animi veniam quos perspiciatis
+            facere itaque cumque tenetur?</p>
+    </section><!-- .cont01 end -->
+</body>
+
+</html>
